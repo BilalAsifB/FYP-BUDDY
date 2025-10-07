@@ -26,7 +26,15 @@ const teamSchema = new mongoose.Schema({
         default: []
     },
     projectIdeas: {
-        type: [String],
+        type: [{
+            studentId: { type: String, required: true },
+            studentName: { type: String, required: true },
+            title: { type: String, default: "" },
+            domain: { type: String, default: "" },
+            idea: { type: String, default: "" },
+            techStack: { type: [String], default: [] },
+            submittedAt: { type: Date, default: Date.now }
+        }],
         default: []
     },
     isProjectIdeaFinalized: {
@@ -85,4 +93,4 @@ function arrayLimit(val) {
     return val.length >= 2;
 }
 
-export const Team = mongoose.Model("Team", teamSchema);
+export const Team = mongoose.model("Team", teamSchema);
