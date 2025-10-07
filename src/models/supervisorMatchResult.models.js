@@ -5,7 +5,7 @@ const supervisorMatchResultSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'SupervisorSearchRequest'
     },
-    compatibiltyScore: {
+    compatibilityScore: {
         type: Number,
         min: 0,
         max: 100
@@ -20,3 +20,5 @@ const supervisorMatchResultSchema = new mongoose.Schema({
         ref: 'User'
     },
 }, { timestamps: true })
+
+export const SupervisorMatchResult = mongoose.model("SupervisorMatchResult", supervisorMatchResultSchema);

@@ -5,7 +5,7 @@ const studentMatchResultSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "StudentSearchRequest",
     },
-    compqtibilityScore: {
+    compatibilityScore: {
         type: Number,
         min: 0,
         max: 100,
@@ -18,7 +18,7 @@ const studentMatchResultSchema = new mongoose.Schema({
     },
     macthedStudentId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        ref: "Student"
     },
 }, {timestamps: true})
 

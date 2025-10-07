@@ -24,7 +24,7 @@ const studentSearchRequestSchema = new mongoose.Schema({
         enum: ["CS", "CYS", "AI", "DS", "SE", "ANY"],
         default: "ANY"
     },
-    bactchPreference: {
+    batchPreference: {
         type: Number,
         default: null
     },

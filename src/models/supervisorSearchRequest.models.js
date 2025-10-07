@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const supervisorSearchRequestSchema = new mongoose.Schema({
-    teamid: {
+    teamId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Team'
     },

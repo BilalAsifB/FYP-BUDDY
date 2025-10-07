@@ -9,7 +9,7 @@ const teamSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
-    finalizedProjectTile: {
+    finalizedProjectTitle: {
         type: String,
         default: ""
     },
@@ -24,6 +24,14 @@ const teamSchema = new mongoose.Schema({
     finalizedProjectTechStack: {
         type: [String],
         default: []
+    },
+    projectIdeas: {
+        type: [String],
+        default: []
+    },
+    isProjectIdeaFinalized: {
+        type: Boolean,
+        default: false
     },
     memberIds: {
         type: [String],
@@ -40,9 +48,9 @@ const teamSchema = new mongoose.Schema({
         type: Number,
         required: true,
         min: 2,
-        max: 2
+        max: 3
     },
-    canAddMembers: {
+    canAddMember: {
         type: Boolean,
         default: true
     },
@@ -72,5 +80,9 @@ const teamSchema = new mongoose.Schema({
         default: ""
     },
 }, {timestamps: true})
+
+function arrayLimit(val) {
+    return val.length >= 2;
+}
 
 export const Team = mongoose.Model("Team", teamSchema);

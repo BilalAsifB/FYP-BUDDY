@@ -67,6 +67,10 @@ const studentSchema = new mongoose.Schema({
         ref: "Team",
         default: null
     }
-}, {_id: false})
+}, {timestamps: true});
+
+function arrayLimit(val) {
+    return val.length >= 1;
+}
 
 export const Student = mongoose.model("Student", studentSchema);

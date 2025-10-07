@@ -27,4 +27,4 @@ const teamSupervisorConnectionSchema = new mongoose.Schema({
     },
 }, { timestamps: true });  
 
-const TeamSupervisorConnection = mongoose.model('TeamSupervisorConnection', teamSupervisorConnectionSchema);
+export const TeamSupervisorConnection = mongoose.model('TeamSupervisorConnection', teamSupervisorConnectionSchema);

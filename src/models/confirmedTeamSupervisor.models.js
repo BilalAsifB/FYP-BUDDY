@@ -8,12 +8,7 @@ const confirmedTeamSupervisorSchema = new mongoose.Schema({
     supervisorId: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Supervisor',
-        default: null
-    },
-    coSupervisorId: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Supervisor',
-        default: null
+        reuired: true
     },
     relationshipType: {
         type: String,

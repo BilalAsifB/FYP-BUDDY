@@ -1,11 +1,11 @@
 import mongoose from"mongoose";
 
 const studentChatRoomSchema = new mongoose.Schema({
-    connectionID: {
-        types: mongoose.Schema.Types.ObjectId,
+    connectionId: {
+        type: mongoose.Schema.Types.ObjectId,
         ref: "StudentConnection",
     },
-    lastMeessageAt: {
+    lastMessageAt: {
         type: Date,
         default: Date.now()
     }
