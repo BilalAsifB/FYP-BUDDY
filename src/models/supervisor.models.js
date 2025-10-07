@@ -19,7 +19,7 @@ const supervisorSchema = new mongoose.Schema({
         max: 7,
         default: 0
     },
-    cosupervisingCount: {
+    coSupervisingCount: {
         type: Number,
         min: 0,
         default: 0
