@@ -11,6 +11,10 @@ const supervisorSearchRequestSchema = new mongoose.Schema({
         required: true,
         default: "SUPERVISOR"
     },
+    desiredDomains: {
+        type: [String],
+        default: []
+    },
     status: {
         type: String,
         enum: ["ACTIVE", "COMPLETED", "CANCELLED"],
