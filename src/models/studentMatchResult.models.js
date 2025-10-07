@@ -16,7 +16,7 @@ const studentMatchResultSchema = new mongoose.Schema({
         min: 1,
         max: 5
     },
-    macthedStudentId: {
+    matchedStudentId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Student"
     },

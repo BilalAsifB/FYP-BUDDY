@@ -9,7 +9,7 @@ const messageSchema = new mongoose.Schema({
     },
     chatRoomType: {
         type: String,
-        enum: ["studentChatRoom", "teamSupervisorChatRoom"],
+        enum: ["StudentChatRoom", "TeamSupervisorChatRoom"],
     },
     senderId: {
         type: String

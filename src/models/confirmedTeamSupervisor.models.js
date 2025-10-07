@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
 const confirmedTeamSupervisorSchema = new mongoose.Schema({
-    teamid: { 
+    teamId: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Team'
     },
     supervisorId: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Supervisor',
-        reuired: true
+        required: true
     },
     relationshipType: {
         type: String,

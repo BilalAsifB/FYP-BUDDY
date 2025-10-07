@@ -17,7 +17,7 @@ const supervisorMatchResultSchema = new mongoose.Schema({
     },
     matchedSupervisorId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Supervisor'
     },
 }, { timestamps: true })
 

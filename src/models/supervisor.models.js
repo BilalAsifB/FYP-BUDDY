@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const supervisorSchema = new mongoose.Schema({
-    id: { 
+    userId: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User' 
     },
