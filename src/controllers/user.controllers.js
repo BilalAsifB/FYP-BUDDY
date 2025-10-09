@@ -41,11 +41,12 @@ const registerUser = asyncHandler(async (req, res) => {
         email: email.toLowerCase().trim(),
         gender,
         password: password.trim(), 
-        role
+        role,
+        refreshToken: ""
     })
 
     const userCreated = await User.findById(user._id).select(
-        "-password -refreshtoken"
+        "-password -refreshToken"
     )
 
     // check if user creation was successful
