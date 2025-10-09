@@ -12,7 +12,7 @@ const generateAccessAndRefreshToken = async (userId) => {
         user.refreshToken = refreshToken
         await user.save({ validateBeforeSave: false }) // save on db without running validators
 
-        return {accessToken, refreshToken}
+        return { accessToken, refreshToken }
     } catch (error) {
         throw new ApiError(500, `Token generation failed: ${error.message}`)
     }
@@ -100,7 +100,7 @@ const loginUser = asyncHandler(async (req, res) => {
         throw new ApiError(401, "Invalid credentials")  
     }
 
-    const {accessToken, refreshToken} = await generateAccessAndRefreshToken(user._id)
+    const { accessToken, refreshToken } = await generateAccessAndRefreshToken(user._id)
 
     const loggedInUser = await User.findById(user._id).select(
         "-password -refreshToken"
