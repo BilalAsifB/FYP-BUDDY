@@ -3,7 +3,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { User } from "../models/user.models.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
-const generateAccessAndRefreshToken = async (userId) {
+const generateAccessAndRefreshToken = async (userId) => {
     try {
         const user = await User.findById(userId)
         const refreshToken = await user.generateRefreshToken()
@@ -94,7 +94,7 @@ const loginUser = asyncHandler(async (req, res) => {
         throw new ApiError(404, "User not found")
     }
 
-    const isCorrect = await user.methods.isPasswordCorrect(password.trim())
+    const isCorrect = await user.isPasswordCorrect(password.trim())
 
     if (!isCorrect) {
         throw new ApiError(401, "Invalid credentials")  
