@@ -8,7 +8,6 @@ const registerUser = asyncHandler(async (req, res) => {
         name, email, gender, password, role
     } = req.body
 
-
     // validate if all fields are provided
     if ([name, email, gender, password, role].some(
         (field) => !field || field?.trim() === "" )) {
