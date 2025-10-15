@@ -24,8 +24,10 @@ app.use(cookieParser());
 
 // routes import
 import userRoutes from "./routes/user.routes.js";
+import profileRoutes from "./routes/profile.routes.js";
 
 // routes 
 app.use("/api/v1/users", userRoutes);
+app.use("api/v1/profiles", profileRoutes);
 
 export { app };
