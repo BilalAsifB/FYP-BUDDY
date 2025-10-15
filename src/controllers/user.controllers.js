@@ -110,16 +110,29 @@ const loginUser = asyncHandler(async (req, res) => {
         "-password -refreshToken"
     )
 
+    const profileIncomplete = !loggedInUser.isProfileCompleted
+
+    const responseData = {
+        user: loggedInUser,
+        accessToken,
+        refreshToken
+    }
+
+    if (profileIncomplete) {
+        responseData.profileIncomplete = true
+    }
+
     return res.status(200).cookie(
         "acccessToken", accessToken, OPTIONS
     ).cookie(
         "refreshToken", refreshToken, OPTIONS
     ).json(
-        new ApiResponse(200, {
-            user: loggedInUser,
-            accessToken,
-            refreshToken
-        }, "Login successful")
+        new ApiResponse(
+            200, 
+            responseData,
+            profileIncomplete ? 
+            "Login successful. Please complete your profile." : 
+            "Login successful")
     )
 })
 
@@ -186,6 +199,8 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
         throw new ApiError(401, error?.message || "Invalid refresh token")
     }
 })
+
+
 
 export { 
     registerUser,
