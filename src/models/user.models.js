@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema({
         enum: ["STUDENT", "SUPERVISOR"],
         default: "STUDENT"
     },
+    isProfileCompleted: {
+        type: Boolean,
+        default: false
+    },
     refreshToken: {
         type: String
     }
