@@ -12,8 +12,8 @@ const router = Router();
 // protect routes
 router.use(verifyJWT);
 
-router.route("/student").post(createSupervisorProfile);
-router.route("/student").patch(updateSupervisorProfile);
-router.route("/student").get(getSupervisorProfile);
+router.route("/supervisor").post(createSupervisorProfile);
+router.route("/supervisor").patch(updateSupervisorProfile);
+router.route("/supervisor").get(getSupervisorProfile);
 
 export default router;
