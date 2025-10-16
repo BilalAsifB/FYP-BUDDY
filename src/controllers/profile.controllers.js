@@ -117,7 +117,6 @@ const updateStudentProfile = asyncHandler(async (req, res) => {
         if (batch < minBatch || batch > maxBatch) {
             throw new ApiError(400, `Batch must be between ${minBatch} and ${maxBatch}`)
         }
-    }
         studentProfile.batch = batch;
     }
 
