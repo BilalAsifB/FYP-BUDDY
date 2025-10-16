@@ -29,7 +29,7 @@ import supervisorProfileRoutes from "./routes/supervisorProfile.routes.js";
 
 // routes 
 app.use("/api/v1/users", userRoutes);
-app.use("api/v1/profiles", studentProfileRoutes);
-app.use("api/v1/profiles", supervisorProfileRoutes);
+app.use("/api/v1/profiles", studentProfileRoutes);
+app.use("/api/v1/profiles", supervisorProfileRoutes);
 
 export { app };
