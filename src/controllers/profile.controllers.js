@@ -28,7 +28,7 @@ const createStudentProfile = asyncHandler(async (req, res) => {
     const maxBatch = new Date().getFullYear() - 3;
     const minBatch = new Date().getFullYear() - 6;
     if (batch < minBatch || batch > maxBatch) {
-        throw new ApiError(400, `Batch must be between ${minBatch} and ${maxBatcch}`)
+        throw new ApiError(400, `Batch must be between ${minBatch} and ${maxBatch}`)
     }
     
     // validate department
@@ -112,13 +112,12 @@ const updateStudentProfile = asyncHandler(async (req, res) => {
 
     // Validate batch if provided
     if (batch !== undefined) {
-        if (batch !== undefined) {
-            const minBatch = new Date().getFullYear() - 6;
-            const maxBatch = new Date().getFullYear() - 3;
-            if (batch < minBatch || batch > maxBatch) {
-                throw new ApiError(400, `Batch must be between ${minBatch} and ${maxBatch}`)
-            }
+        const minBatch = new Date().getFullYear() - 6;
+        const maxBatch = new Date().getFullYear() - 3;
+        if (batch < minBatch || batch > maxBatch) {
+            throw new ApiError(400, `Batch must be between ${minBatch} and ${maxBatch}`)
         }
+    }
         studentProfile.batch = batch;
     }
 
