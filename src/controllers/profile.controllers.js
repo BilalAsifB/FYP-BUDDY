@@ -4,13 +4,13 @@ import { asyncHandler } from "../utils/asyncHandler"
 import { ApiResponse } from "../utils/ApiResponse"
 
 
-const createStudentProfile = asyncHandler(async (requestAnimationFrame, res) => {
+const createStudentProfile = asyncHandler(async (req, res) => {
     const userId = req.user._id;
     
     const {
         studentId, batch, department, cgpa, projectTitle, projectDomain,
         projectIdea, projectTechStack, interests, skills 
-    } = requestAnimationFrame.body
+    } = req.body
 
     // validate if required fields are present
     if ([studentId, batch, department, cgpa, interests, skills].some(
@@ -20,15 +20,15 @@ const createStudentProfile = asyncHandler(async (requestAnimationFrame, res) => 
 
     // validate studentId format
     const studentIdRegex = /^\d{2}[KI]-\d{4}$/; // Example: xxK-xxxx or xxI-xxxx
-    if (!studentIdRegex.test(studentId.uppercase().trim())) {
+    if (!studentIdRegex.test(studentId.toUpperCase().trim())) {
         throw new ApiError(400, "Student ID must be in the format xxK-xxxx or xxI-xxxx")
     }
 
     // validate batch range
-    const minBatcch = new Date().getFullYear() - 3;
-    const maxBatch = new Date().getFullYear() - 6;
-    if (batch < maxBatch || batch > minBatcch) {
-        throw new ApiError(400, `Batch must be between ${maxBatch} and ${minBatcch}`)
+    const maxBatch = new Date().getFullYear() - 3;
+    const minBatch = new Date().getFullYear() - 6;
+    if (batch < minBatch || batch > maxBatch) {
+        throw new ApiError(400, `Batch must be between ${minBatch} and ${maxBatcch}`)
     }
     
     // validate department
@@ -78,7 +78,7 @@ const createStudentProfile = asyncHandler(async (requestAnimationFrame, res) => 
     // proceed to create student profile
     const studentProfile = await Student.create({
         userId,
-        studentId: studentId.uppercase().trim(),
+        studentId: studentId.toUpperCase().trim(),
         batch, department, cgpa,
         projectTitle: projectTitle?.trim() || "",
         projectDomain: projectDomain?.trim() || "",
@@ -112,10 +112,12 @@ const updateStudentProfile = asyncHandler(async (req, res) => {
 
     // Validate batch if provided
     if (batch !== undefined) {
-        const minBatch = new Date().getFullYear() - 3;
-        const maxBatch = new Date().getFullYear() - 6;
-        if (batch < maxBatch || batch > minBatch) {
-            throw new ApiError(400, `Batch must be between ${maxBatch} and ${minBatch}`)
+        if (batch !== undefined) {
+            const minBatch = new Date().getFullYear() - 6;
+            const maxBatch = new Date().getFullYear() - 3;
+            if (batch < minBatch || batch > maxBatch) {
+                throw new ApiError(400, `Batch must be between ${minBatch} and ${maxBatch}`)
+            }
         }
         studentProfile.batch = batch;
     }

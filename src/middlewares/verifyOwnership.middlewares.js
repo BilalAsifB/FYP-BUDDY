@@ -6,7 +6,7 @@ import { Supervisor } from "../models/supervisor.models.js";
 export const verifyStudentProfileOwnership = asyncHandler(async (req, res, next) => {
     const userId = req.user._id;
 
-    // Find student profile by userId
+    // Find supervisor profile by userId
     const studentProfile = await Student.findOne({ userId });
 
     if (!studentProfile) {
@@ -18,7 +18,7 @@ export const verifyStudentProfileOwnership = asyncHandler(async (req, res, next)
         throw new ApiError(403, "You are not authorized to access this profile");
     }
 
-    // Attach student profile to request object for use in controllers
+    // Attach supervisor profile to request object for use in controllers
     req.studentProfile = studentProfile;
 
     next();
@@ -27,7 +27,7 @@ export const verifyStudentProfileOwnership = asyncHandler(async (req, res, next)
 export const verifySupervisorProfileOwnership = asyncHandler(async (req, res, next) => {
     const userId = req.user._id;
 
-    // Find student profile by userId
+    // Find supervisor profile by userId
     const supervisorProfile = await Supervisor.findOne({ userId });
 
     if (!supervisorProfile) {
