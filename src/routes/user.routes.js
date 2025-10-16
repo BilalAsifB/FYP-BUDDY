@@ -1,7 +1,5 @@
 import { Router } from "express";
-import { refreshAccessToken, registerUser } from "../controllers/user.controllers.js";
-import { loginUser } from "../controllers/user.controllers.js";
-import { logOutUser } from "../controllers/user.controllers.js";
+import { refreshAccessToken, registerUser, loginUser, logOutUser } from "../controllers/user.controllers.js";
 import { verifyJWT } from "../middlewares/auth.middlewares.js";
 import rateLimit from  "express-rate-limit";
 
