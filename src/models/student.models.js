@@ -10,8 +10,7 @@ const studentSchema = new mongoose.Schema({
         required: true,
         unique: true,
         trim: true,
-        uppercase: true,
-        length: 8
+        uppercase: true
     },
     batch: {
         type: Number,
