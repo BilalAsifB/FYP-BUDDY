@@ -1,7 +1,7 @@
-import { Student } from "../models/student.models"
-import { ApiError } from "../utils/ApiError"
-import { asyncHandler } from "../utils/asyncHandler"
-import { ApiResponse } from "../utils/ApiResponse"
+import { Student } from "../models/student.models.js"
+import { ApiError } from "../utils/ApiError.js"
+import { asyncHandler } from "../utils/asyncHandler.js"
+import { ApiResponse } from "../utils/ApiResponse.js"
 
 
 const createStudentProfile = asyncHandler(async (req, res) => {
